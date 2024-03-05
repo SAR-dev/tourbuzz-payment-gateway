@@ -1,5 +1,6 @@
-import { Router } from "express";
+import { Router, Request } from "express";
 import bkash from "../bkash";
+import { CreatePaymentType } from "../types/bkash";
 
 export const bkashController = Router();
 
@@ -7,10 +8,9 @@ bkashController.get('/', async (req, res) => {
     return res.status(201).send("Express + TypeScript Server");
 });
 
-bkashController.post('/create', async (req, res) => {
+bkashController.post('/create', async (req: Request<any, any, CreatePaymentType>, res) => {
     try {
-        const paymentInfo = req.body; //validate body here
-
+        const paymentInfo = req.body; 
         const result = await bkash.createPayment({
             amount: paymentInfo.amount,
             orderID: paymentInfo.orderID,
