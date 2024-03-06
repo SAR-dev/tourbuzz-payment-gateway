@@ -76,6 +76,7 @@ async function executePayment(payload: ExecutePaymentPayloadType, id_token: stri
         payload, 
         config
     );
+    console.log(response.data)
     if(!response.data.paymentID) throw Error("Payment execute failed");
     return response.data;
 }
