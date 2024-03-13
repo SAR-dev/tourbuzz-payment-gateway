@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
-import { bkashController } from "./controllers/bkashController";
+import { bkashController } from "./controllers/bkash";
 
 dotenv.config();
 

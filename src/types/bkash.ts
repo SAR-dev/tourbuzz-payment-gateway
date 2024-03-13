@@ -1,12 +1,9 @@
 // PAYLOADS
 export interface CreatePaymentPayloadType {
-    mode: string,
     payerReference: string,
-    callbackURL: string,
     merchantAssociationInfo: string,
     amount: string,
     currency: string,
-    intent: string,
     merchantInvoiceNumber: string
 }
 
