@@ -7,13 +7,18 @@ export interface CreatePaymentPayloadType {
     merchantInvoiceNumber: string
 }
 
+export interface CallbackPayloadType {
+    paymentID: string,
+    status: string,
+}
+
 export interface ExecutePaymentPayloadType {
     paymentID: string
 }
 
-export interface QueryPaymentPayloadType {
-    paymentID: string
-}
+// export interface QueryPaymentPayloadType {
+//     paymentID: string
+// }
 
 // RESPONSES
 export interface CreatePaymentResponseType {
@@ -48,21 +53,21 @@ export interface ExecutePaymentResponseType {
     merchantInvoiceNumber: string;
 }
 
-export interface QueryPaymentResponseType {
-    statusCode: string;
-    statusMessage: string;
-    paymentID: string;
-    mode: string;
-    paymentCreateTime: string;
-    amount: string;
-    currency: string;
-    intent: string;
-    merchantInvoice: string;
-    transactionStatus: string;
-    verificationStatus: string;
-    payerReference: string;
-    agreementID: string;
-    agreementStatus: string;
-    agreementCreateTime: string;
-    agreementExecuteTime: string;
-}
+// export interface QueryPaymentResponseType {
+//     statusCode: string;
+//     statusMessage: string;
+//     paymentID: string;
+//     mode: string;
+//     paymentCreateTime: string;
+//     amount: string;
+//     currency: string;
+//     intent: string;
+//     merchantInvoice: string;
+//     transactionStatus: string;
+//     verificationStatus: string;
+//     payerReference: string;
+//     agreementID: string;
+//     agreementStatus: string;
+//     agreementCreateTime: string;
+//     agreementExecuteTime: string;
+// }

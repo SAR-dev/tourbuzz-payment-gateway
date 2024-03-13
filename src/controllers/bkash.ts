@@ -1,5 +1,10 @@
 import { Router, Request } from "express";
-import { CreatePaymentPayloadType, CreatePaymentResponseType, ExecutePaymentPayloadType, ExecutePaymentResponseType, QueryPaymentPayloadType, QueryPaymentResponseType } from "../types/bkash";
+import {
+    CallbackPayloadType,
+    CreatePaymentPayloadType,
+    CreatePaymentResponseType,
+    ExecutePaymentPayloadType,
+} from "../types/bkash";
 import axios, { AxiosRequestConfig } from 'axios';
 import constants from "../constants";
 import { isOlderThan3000 } from "../helpers";
@@ -107,14 +112,13 @@ bkashController.post('/create', async (req: Request<any, any, CreatePaymentPaylo
     }
 });
 
-bkashController.get('/payment/callback', async (req: Request<any, any>, res) => {
+bkashController.get('/payment/callback', async (req: Request<any, any, any, CallbackPayloadType>, res) => {
     const { paymentID, status } = req.query
-    const payment_id = paymentID?.toString()
-    if (!payment_id || status != "success") return;
+    if (status != "success") return;
 
     try {
         const id_token = await getToken();
-        const data = await executePayment({ paymentID: payment_id }, id_token)
+        const data = await executePayment({ paymentID }, id_token)
         return res.status(201).json(data);
         // handle db here
     } catch (error: any) {
